@@ -279,10 +279,14 @@ class YouTubeConverterApp(ctk.CTk):
 
         if smart_mode:
             # Smart Mode: SponsorBlock integráció a felesleg kivágására
+            categories = ['intro', 'outro', 'selfpromo', 'interaction', 'music_offtopic']
             postprocessors.append({
                 'key': 'SponsorBlock',
-                'categories': ['intro', 'outro', 'selfpromo', 'interaction', 'music_offtopic'],
-                'action': 'remove',
+                'categories': categories,
+            })
+            postprocessors.append({
+                'key': 'ModifyChapters',
+                'remove_sponsor_segments': categories,
             })
 
         ydl_opts = {
