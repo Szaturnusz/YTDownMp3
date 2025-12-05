@@ -38,10 +38,10 @@ Professional desktop application for converting YouTube videos into high-quality
 
 The easiest way is to install the `.deb` package.
 
-1.  Download the latest `ytdownmp3_1.0.0_amd64.deb` file.
+1.  Download the latest `ytdownmp3_1.0.1_amd64.deb` file.
 2.  Install via terminal:
     ```bash
-    sudo dpkg -i ytdownmp3_1.0.0_amd64.deb
+    sudo dpkg -i ytdownmp3_1.0.1_amd64.deb
     sudo apt-get install -f  # If there are missing dependencies
     ```
 3.  Launch from applications: **YT Audio Converter Pro**
@@ -97,6 +97,6 @@ Run the `build_windows.bat` script. The output file will be in the `dist/` folde
 ## 📝 License
 This project is open source. Enjoy!
 Created by: **Szaturnusz**
-Version: 1.0.0
+Version: 1.0.1
 
 
