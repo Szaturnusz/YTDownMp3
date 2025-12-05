@@ -10,6 +10,9 @@ Professional desktop application for converting YouTube videos into high-quality
 *   **🔊 Audio Normalization:** Brings the volume of all downloaded files to a uniform level (EBU R128 standard), so there won't be quieter or louder tracks in your playlist.
 *   **✂️ Smart Mode:** Thanks to SponsorBlock integration, it automatically cuts non-music parts from videos (intro, outro, subscription reminders, sponsorships).
 *   **🖼️ Metadata & Cover Art:** Automatically downloads and embeds the video's cover art, title, and artist into the file.
+*   **📋 Playlist Support:**
+    *   **Single Link:** Converts a single video to audio.
+    *   **Playlist Link:** Automatically processes and converts all videos in the playlist to MP3.
 *   **🌍 Automatic Language Detection:** The program starts by detecting the system language. Supported languages:
     *   🇬🇧 English (en)
     *   🇭🇺 Hungarian (hu)
