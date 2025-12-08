@@ -2,6 +2,7 @@
 import os
 import sys
 import threading
+import concurrent.futures
 import subprocess
 import platform
 import customtkinter as ctk
@@ -90,9 +91,10 @@ class YouTubeConverterApp(ctk.CTk):
         self.label_quality = ctk.CTkLabel(self.quality_frame, text=self.t["quality_label"], font=ctk.CTkFont(weight="bold"))
         self.label_quality.pack(side="left", padx=(0, 10))
 
-        self.option_quality = ctk.CTkOptionMenu(self.quality_frame, values=["320 kbps (Studio)", "192 kbps (High)", "128 kbps (Normal)"], width=150)
+        # Csak CD minőség engedélyezése
+        self.option_quality = ctk.CTkOptionMenu(self.quality_frame, values=["320 kbps (CD Quality)"], width=180)
         self.option_quality.pack(side="left")
-        self.option_quality.set("320 kbps (Studio)")
+        self.option_quality.set("320 kbps (CD Quality)")
 
         # Smart Mode (ÚJ)
         self.switch_smart = ctk.CTkSwitch(self.quality_frame, text=self.t["smart_mode"], onvalue=True, offvalue=False)
@@ -244,7 +246,7 @@ class YouTubeConverterApp(ctk.CTk):
             
             for i, filename in enumerate(files):
                 self.log(self.t["norm_item_log"].format(i+1, count, os.path.basename(filename)))
-                self.normalize_audio(filename, fmt)
+                self.normalize_audio(filename, fmt, quality)
             
             self.log("-" * 30)
             self.log(self.t["success_log"])
@@ -298,31 +300,86 @@ class YouTubeConverterApp(ctk.CTk):
             'quiet': True,
             'no_warnings': True,
             'ignoreerrors': True, # Playlistnél ne álljon meg egy hiba miatt
+            'concurrent_fragment_downloads': 5, # Gyorsabb letöltés darabolással
         }
 
         downloaded_files = []
 
-        with yt_dlp.YoutubeDL(ydl_opts) as ydl:
-            # Először lekérjük az infót, hogy tudjuk, playlist-e
+        # Először ellenőrizzük, hogy playlist-e (letöltés nélkül)
+        check_opts = ydl_opts.copy()
+        check_opts['extract_flat'] = True
+        check_opts['progress_hooks'] = [] # Itt nem kell progress
+
+        is_playlist = False
+        playlist_info = None
+
+        with yt_dlp.YoutubeDL(check_opts) as ydl:
             try:
-                info = ydl.extract_info(url, download=True)
+                info = ydl.extract_info(url, download=False)
+                if 'entries' in info:
+                    is_playlist = True
+                    playlist_info = info
             except Exception as e:
                 self.log(self.t["download_error"].format(e))
                 return []
 
-            if 'entries' in info:
-                # Ez egy Playlist
-                self.log(self.t["playlist_detected"].format(info.get('title')))
-                for entry in info['entries']:
-                    if entry:
-                        filename = ydl.prepare_filename(entry)
+        if is_playlist:
+            # Ez egy Playlist - Párhuzamos letöltés
+            self.log(self.t["playlist_detected"].format(playlist_info.get('title')))
+            entries = list(playlist_info['entries'])
+            total_items = len(entries)
+            self.log(f"Playlist elemek száma: {total_items}. Párhuzamos letöltés indítása...")
+
+            def download_entry(entry):
+                video_url = entry.get('url')
+                if not video_url:
+                    video_url = f"https://www.youtube.com/watch?v={entry.get('id')}"
+                
+                # Külön szálon saját ydl példány, progress hook nélkül
+                thread_opts = ydl_opts.copy()
+                thread_opts['progress_hooks'] = []
+                thread_opts['quiet'] = True
+                
+                with yt_dlp.YoutubeDL(thread_opts) as ydl_worker:
+                    try:
+                        info_dict = ydl_worker.extract_info(video_url, download=True)
+                        filename = ydl_worker.prepare_filename(info_dict)
                         final_filename = self._get_final_filename(filename, fmt)
-                        downloaded_files.append(final_filename)
-            else:
-                # Ez egy sima videó
-                filename = ydl.prepare_filename(info)
-                final_filename = self._get_final_filename(filename, fmt)
-                downloaded_files.append(final_filename)
+                        return final_filename
+                    except Exception as e:
+                        return None
+
+            # ThreadPoolExecutor használata
+            max_workers = 5 # Egyszerre 5 videó
+            completed = 0
+            
+            with concurrent.futures.ThreadPoolExecutor(max_workers=max_workers) as executor:
+                futures = [executor.submit(download_entry, entry) for entry in entries]
+                
+                for future in concurrent.futures.as_completed(futures):
+                    result = future.result()
+                    if result:
+                        downloaded_files.append(result)
+                    
+                    completed += 1
+                    # Progress bar frissítése (darabszám alapján)
+                    progress = completed / total_items
+                    self.progressbar.set(progress)
+                    # Opcionális: logolhatnánk minden X. elemnél, de ne spammeljük tele
+                    if completed % 5 == 0 or completed == total_items:
+                         self.log(f"Letöltve: {completed}/{total_items}")
+
+        else:
+            # Ez egy sima videó - Hagyományos módszer
+            with yt_dlp.YoutubeDL(ydl_opts) as ydl:
+                try:
+                    info = ydl.extract_info(url, download=True)
+                    filename = ydl.prepare_filename(info)
+                    final_filename = self._get_final_filename(filename, fmt)
+                    downloaded_files.append(final_filename)
+                except Exception as e:
+                    self.log(self.t["download_error"].format(e))
+                    return []
             
         return downloaded_files
 
@@ -339,7 +396,7 @@ class YouTubeConverterApp(ctk.CTk):
             return base + ".aac"
         return base + ".mp3"
 
-    def normalize_audio(self, input_file, fmt):
+    def normalize_audio(self, input_file, fmt, quality):
         output_file = os.path.splitext(input_file)[0] + "_temp" + os.path.splitext(input_file)[1]
         
         # Codec kiválasztása a normalizáláshoz
@@ -348,13 +405,20 @@ class YouTubeConverterApp(ctk.CTk):
             ffmpeg_codec = 'libvorbis'
         elif fmt == 'aac':
             ffmpeg_codec = 'aac'
+            
+        # Bitráta előkészítése (pl. "320" -> "320k")
+        bitrate = f"{quality}k"
         
         normalizer = FFmpegNormalize(
-            target_level=-14,
+            target_level=-13, # Kicsit hangosabb, rádió-barát szint
+            true_peak=-1.0,   # Clipping elkerülése
+            loudness_range_target=7.0, # Dinamika kompresszió az egységességért
             print_stats=False,
             debug=False,
             progress=False,
-            audio_codec=ffmpeg_codec
+            audio_codec=ffmpeg_codec,
+            audio_bitrate=bitrate,
+            extra_output_options=['-ar', '44100'] # CD minőségű mintavételezés (44.1 kHz)
         )
         
         try:

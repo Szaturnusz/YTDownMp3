@@ -6,7 +6,7 @@ import sys
 
 APP_NAME = "YTDownMP3"
 BINARY_NAME = "ytdownmp3"
-VERSION = "1.0.0"
+VERSION = "2.0.0"
 DESCRIPTION = "YouTube to MP3 Converter Pro"
 MAINTAINER = "Szaturnusz"
 ICON_PATH = "ytdown.png"

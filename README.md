@@ -6,13 +6,21 @@ Professional desktop application for converting YouTube videos into high-quality
 
 ## ✨ Key Features
 
-*   **🎧 Studio Quality:** Supports MP3, OGG, and AAC formats with up to 320kbps bitrate.
-*   **🔊 Audio Normalization:** Brings the volume of all downloaded files to a uniform level (EBU R128 standard), so there won't be quieter or louder tracks in your playlist.
+*   **🚀 Ultra-Fast Downloads:**
+    *   **Parallel Playlist Processing:** Downloads up to 5 videos simultaneously from playlists.
+    *   **Accelerated Single Downloads:** Uses multi-threaded fragment downloading for maximum speed.
+*   **💿 CD Quality Audio:**
+    *   **High Fidelity:** Enforced 320kbps bitrate and 44.1kHz sample rate for crystal clear sound.
+    *   **Formats:** Supports MP3, OGG, and AAC.
+*   **🔊 Advanced Audio Normalization:**
+    *   **Consistent Volume:** Uses EBU R128 standard (-13 LUFS) with dynamic range compression.
+    *   **No Distortion:** True Peak limiting (-1.0 dBTP) ensures no clipping or crackling.
+    *   **Radio-Ready:** Tracks sound uniform and professional, just like on the radio.
 *   **✂️ Smart Mode:** Thanks to SponsorBlock integration, it automatically cuts non-music parts from videos (intro, outro, subscription reminders, sponsorships).
 *   **🖼️ Metadata & Cover Art:** Automatically downloads and embeds the video's cover art, title, and artist into the file.
 *   **📋 Playlist Support:**
     *   **Single Link:** Converts a single video to audio.
-    *   **Playlist Link:** Automatically processes and converts all videos in the playlist to MP3.
+    *   **Playlist Link:** Automatically processes and converts all videos in the playlist.
 *   **🌍 Automatic Language Detection:** The program starts by detecting the system language. Supported languages:
     *   🇬🇧 English (en)
     *   🇭🇺 Hungarian (hu)
@@ -38,10 +46,10 @@ Professional desktop application for converting YouTube videos into high-quality
 
 The easiest way is to install the `.deb` package.
 
-1.  Download the latest `ytdownmp3_1.0.1_amd64.deb` file.
+1.  Download the latest `ytdownmp3_2.0.0_amd64.deb` file.
 2.  Install via terminal:
     ```bash
-    sudo dpkg -i ytdownmp3_1.0.1_amd64.deb
+    sudo dpkg -i ytdownmp3_2.0.0_amd64.deb
     sudo apt-get install -f  # If there are missing dependencies
     ```
 3.  Launch from applications: **YT Audio Converter Pro**
@@ -97,6 +105,6 @@ Run the `build_windows.bat` script. The output file will be in the `dist/` folde
 ## 📝 License
 This project is open source. Enjoy!
 Created by: **Szaturnusz**
-Version: 1.0.1
+Version: 2.0.0
 
 
