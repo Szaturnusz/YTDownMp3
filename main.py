@@ -34,7 +34,7 @@ class YouTubeConverterApp(ctk.CTk):
         self.main_frame = ctk.CTkFrame(self, corner_radius=15)
         self.main_frame.grid(row=0, column=0, padx=20, pady=20, sticky="nsew")
         self.main_frame.grid_columnconfigure(0, weight=1)
-        self.main_frame.grid_rowconfigure(6, weight=1) # A log mező nyúljon meg (most már a 6. sorban van)
+        self.main_frame.grid_rowconfigure(7, weight=1) # A log mező nyúljon meg (most már a 7. sorban van)
 
         # Fejléc
         self.header_frame = ctk.CTkFrame(self.main_frame, fg_color="transparent")
@@ -101,18 +101,35 @@ class YouTubeConverterApp(ctk.CTk):
         self.switch_smart.pack(side="right", padx=(10, 0))
         self.switch_smart.select() # Alapból bekapcsolva
 
+        # Playlist Percentage Control (ÚJ)
+        self.playlist_frame = ctk.CTkFrame(self.main_frame, fg_color="transparent")
+        self.playlist_frame.grid(row=4, column=0, padx=30, pady=5, sticky="ew")
+
+        self.label_playlist_percentage = ctk.CTkLabel(self.playlist_frame, text=self.t["playlist_percentage_label"], font=ctk.CTkFont(weight="bold"))
+        self.label_playlist_percentage.pack(side="left", padx=(0, 10))
+
+        self.slider_playlist_percentage = ctk.CTkSlider(self.playlist_frame, from_=10, to=100, number_of_steps=9, width=200)
+        self.slider_playlist_percentage.pack(side="left", padx=(0, 10))
+        self.slider_playlist_percentage.set(50)  # Default to 50%
+
+        self.label_playlist_percentage_value = ctk.CTkLabel(self.playlist_frame, text="50%", font=ctk.CTkFont(weight="bold"))
+        self.label_playlist_percentage_value.pack(side="left")
+
+        # Update label when slider changes
+        self.slider_playlist_percentage.configure(command=self.update_playlist_percentage_label)
+
         # Akció Gomb
         self.btn_download = ctk.CTkButton(self.main_frame, text=self.t["download_btn"], height=50, font=ctk.CTkFont(size=16, weight="bold"), corner_radius=25, command=self.start_download_thread)
-        self.btn_download.grid(row=4, column=0, padx=30, pady=20, sticky="ew")
+        self.btn_download.grid(row=5, column=0, padx=30, pady=20, sticky="ew")
 
         # Progress Bar (ÚJ)
         self.progressbar = ctk.CTkProgressBar(self.main_frame, height=15)
-        self.progressbar.grid(row=5, column=0, padx=30, pady=(0, 10), sticky="ew")
+        self.progressbar.grid(row=6, column=0, padx=30, pady=(0, 10), sticky="ew")
         self.progressbar.set(0)
 
         # Log / Státusz Szekció
         self.log_frame = ctk.CTkFrame(self.main_frame, fg_color=("gray95", "black"), corner_radius=10)
-        self.log_frame.grid(row=6, column=0, padx=30, pady=(0, 30), sticky="nsew")
+        self.log_frame.grid(row=7, column=0, padx=30, pady=(0, 30), sticky="nsew")
         self.log_frame.grid_columnconfigure(0, weight=1)
         self.log_frame.grid_rowconfigure(0, weight=1)
 
@@ -193,6 +210,10 @@ class YouTubeConverterApp(ctk.CTk):
         except Exception as e:
             self.log(self.t["paste_error"].format(e))
 
+    def update_playlist_percentage_label(self, value):
+        percentage = int(float(value))
+        self.label_playlist_percentage_value.configure(text=f"{percentage}%")
+
 
     def log(self, message):
         self.textbox_log.configure(state="normal")
@@ -216,6 +237,7 @@ class YouTubeConverterApp(ctk.CTk):
         fmt = self.option_format.get().lower()
         quality = self.option_quality.get().split()[0] # "320", "192", "128"
         smart_mode = self.switch_smart.get()
+        playlist_percentage = int(self.slider_playlist_percentage.get())
         
         if not url:
             self.log(self.t["error_no_link"])
@@ -227,14 +249,14 @@ class YouTubeConverterApp(ctk.CTk):
         if smart_mode: self.log(self.t["smart_mode_log"])
         
         # Külön szálon futtatjuk, hogy ne fagyjon le az ablak
-        thread = threading.Thread(target=self.process_video, args=(url, fmt, quality, smart_mode))
+        thread = threading.Thread(target=self.process_video, args=(url, fmt, quality, smart_mode, playlist_percentage))
         thread.start()
 
-    def process_video(self, url, fmt, quality, smart_mode):
+    def process_video(self, url, fmt, quality, smart_mode, playlist_percentage):
         try:
             # 1. Letöltés
             self.log(self.t["download_meta_log"])
-            files = self.download_audio(url, fmt, quality, smart_mode)
+            files = self.download_audio(url, fmt, quality, smart_mode, playlist_percentage)
             
             if not files:
                 self.log(self.t["download_fail_log"])
@@ -260,7 +282,7 @@ class YouTubeConverterApp(ctk.CTk):
         finally:
             self.btn_download.configure(state="normal")
 
-    def download_audio(self, url, fmt, quality, smart_mode):
+    def download_audio(self, url, fmt, quality, smart_mode, playlist_percentage):
         # Formátum leképezése yt-dlp codec-re
         codec_map = {
             "mp3": "mp3",
@@ -328,7 +350,12 @@ class YouTubeConverterApp(ctk.CTk):
             self.log(self.t["playlist_detected"].format(playlist_info.get('title')))
             entries = list(playlist_info['entries'])
             total_items = len(entries)
-            self.log(f"Playlist elemek száma: {total_items}. Párhuzamos letöltés indítása...")
+            
+            # Apply playlist percentage filter
+            items_to_download = max(1, int(total_items * playlist_percentage / 100))
+            entries = entries[:items_to_download]
+            
+            self.log(f"Playlist elemek száma: {total_items}. Letöltendő: {items_to_download} ({playlist_percentage}%). Párhuzamos letöltés indítása...")
 
             def download_entry(entry):
                 video_url = entry.get('url')
@@ -363,11 +390,11 @@ class YouTubeConverterApp(ctk.CTk):
                     
                     completed += 1
                     # Progress bar frissítése (darabszám alapján)
-                    progress = completed / total_items
+                    progress = completed / items_to_download
                     self.progressbar.set(progress)
                     # Opcionális: logolhatnánk minden X. elemnél, de ne spammeljük tele
-                    if completed % 5 == 0 or completed == total_items:
-                         self.log(f"Letöltve: {completed}/{total_items}")
+                    if completed % 5 == 0 or completed == items_to_download:
+                         self.log(f"Letöltve: {completed}/{items_to_download}")
 
         else:
             # Ez egy sima videó - Hagyományos módszer
