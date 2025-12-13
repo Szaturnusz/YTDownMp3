@@ -81,7 +81,7 @@ git clone https://github.com/Szaturnusz/YTDownMP3.git
 cd YTDownMP3
 
 # Create a virtual environment
-python -m venv .venv
+python3 -m venv .venv
 
 # Activate the environment
 # Linux/macOS:
@@ -99,7 +99,7 @@ pip install -r requirements.txt
 This script uses PyInstaller to create a single-file binary and then wraps it into a Debian package structure.
 
 ```bash
-python build_linux.py
+python3 build_linux.py
 ```
 *   **Output:** `ytdownmp3_2.0.0_amd64.deb` (in the project root)
 
