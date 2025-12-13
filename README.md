@@ -102,6 +102,29 @@ Run the `build_windows.bat` script. The output file will be in the `dist/` folde
 
 ---
 
+## 📋 Changelog
+
+### Version 2.0.0 (Latest)
+
+**Major Features:**
+*   🚀 **Ultra-Fast Downloads:** Implemented parallel playlist processing (up to 5 simultaneous downloads) and multi-threaded fragment downloading for maximum speed
+*   💿 **CD Quality Audio:** Enforced high-fidelity audio output with 320kbps bitrate and 44.1kHz sample rate in MP3, OGG, and AAC formats
+*   🔊 **Advanced Audio Normalization:** Integrated EBU R128 standard normalization (-13 LUFS) with dynamic range compression and True Peak limiting (-1.0 dBTP)
+*   ✂️ **Smart Mode:** Added SponsorBlock integration for automatic removal of non-music segments (intros, outros, sponsorships)
+*   🖼️ **Metadata & Cover Art:** Automatic download and embedding of video thumbnails and metadata into audio files
+*   📋 **Playlist Support:** Full support for both single video and playlist conversions
+*   🌍 **Multi-Language Support:** Added automatic language detection with support for 14 languages (English, Hungarian, German, Russian, Swedish, Norwegian, Italian, Spanish, French, Slovak, Romanian, Croatian, Turkish, Greek)
+*   🎨 **Modern UI:** Complete redesign with Dark Mode using CustomTkinter for a professional appearance
+*   🐧 **Linux DEB Package:** Added automated Debian package creation for easy installation on Ubuntu/Debian/Mint systems
+
+**Technical Improvements:**
+*   Implemented robust error handling and progress tracking
+*   Added concurrent processing for improved performance
+*   Integrated ffmpeg-normalize for professional audio processing
+*   Used yt-dlp for reliable video downloading
+
+---
+
 ## 📝 License
 This project is open source. Enjoy!
 Created by: **Szaturnusz**
