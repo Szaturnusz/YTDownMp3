@@ -102,6 +102,48 @@ Run the `build_windows.bat` script. The output file will be in the `dist/` folde
 
 ---
 
+## 📋 Changelog
+
+### Version 2.0.0 (Latest)
+
+**Major Features:**
+*   🚀 **Ultra-Fast Downloads:**
+    *   Parallel playlist processing (up to 5 simultaneous downloads)
+    *   Multi-threaded fragment downloading for maximum speed
+*   💿 **CD Quality Audio:**
+    *   High-fidelity audio output with 320kbps bitrate and 44.1kHz sample rate
+    *   Supports MP3, OGG, and AAC formats
+*   🔊 **Advanced Audio Normalization:**
+    *   EBU R128 standard normalization (target: -13 LUFS - Loudness Units relative to Full Scale)
+    *   Dynamic range compression for consistent volume
+    *   True Peak limiting (-1.0 dBTP - decibels True Peak) to prevent distortion
+*   ✂️ **Smart Mode:**
+    *   SponsorBlock integration for automatic removal of non-music segments
+    *   Removes intros, outros, and sponsorships
+*   🖼️ **Metadata & Cover Art:**
+    *   Automatic download and embedding of video thumbnails
+    *   Metadata tagging for proper music library organization
+*   📋 **Playlist Support:**
+    *   Full support for both single video and playlist conversions
+*   🌍 **Multi-Language Support:**
+    *   Automatic language detection
+    *   14 languages supported: English, Hungarian, German, Russian, Swedish, Norwegian,
+        Italian, Spanish, French, Slovak, Romanian, Croatian, Turkish, Greek
+*   🎨 **Modern UI:**
+    *   Complete redesign with Dark Mode using CustomTkinter
+    *   Professional and intuitive interface
+*   🐧 **Linux DEB Package:**
+    *   Automated Debian package creation
+    *   Easy installation on Ubuntu/Debian/Mint systems
+
+**Technical Improvements:**
+*   Implemented robust error handling and progress tracking
+*   Added concurrent processing for improved performance
+*   Integrated ffmpeg-normalize for professional audio processing
+*   Used yt-dlp for reliable video downloading
+
+---
+
 ## 📝 License
 This project is open source. Enjoy!
 Created by: **Szaturnusz**
