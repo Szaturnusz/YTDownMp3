@@ -108,7 +108,7 @@ class YouTubeConverterApp(ctk.CTk):
         self.label_playlist_percentage = ctk.CTkLabel(self.playlist_frame, text=self.t["playlist_percentage_label"], font=ctk.CTkFont(weight="bold"))
         self.label_playlist_percentage.pack(side="left", padx=(0, 10))
 
-        self.slider_playlist_percentage = ctk.CTkSlider(self.playlist_frame, from_=10, to=100, number_of_steps=10, width=200)
+        self.slider_playlist_percentage = ctk.CTkSlider(self.playlist_frame, from_=10, to=100, number_of_steps=9, width=200)
         self.slider_playlist_percentage.pack(side="left", padx=(0, 10))
         self.slider_playlist_percentage.set(50)  # Default to 50%
 
