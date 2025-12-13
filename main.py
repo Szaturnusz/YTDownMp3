@@ -108,7 +108,7 @@ class YouTubeConverterApp(ctk.CTk):
         self.label_playlist_percentage = ctk.CTkLabel(self.playlist_frame, text=self.t["playlist_percentage_label"], font=ctk.CTkFont(weight="bold"))
         self.label_playlist_percentage.pack(side="left", padx=(0, 10))
 
-        self.slider_playlist_percentage = ctk.CTkSlider(self.playlist_frame, from_=10, to=100, number_of_steps=9, width=200)
+        self.slider_playlist_percentage = ctk.CTkSlider(self.playlist_frame, from_=10, to=100, number_of_steps=10, width=200)
         self.slider_playlist_percentage.pack(side="left", padx=(0, 10))
         self.slider_playlist_percentage.set(50)  # Default to 50%
 
@@ -352,6 +352,8 @@ class YouTubeConverterApp(ctk.CTk):
             total_items = len(entries)
             
             # Apply playlist percentage filter
+            # Note: For very small playlists, at least 1 item will be downloaded
+            # to ensure the operation doesn't fail (e.g., 10% of 5 items = 0.5 -> 1 item)
             items_to_download = max(1, int(total_items * playlist_percentage / 100))
             entries = entries[:items_to_download]
             
