@@ -22,6 +22,7 @@ TRANSLATIONS = {
         "save_to_btn": "📂 Save to...",
         "quality_label": "Audio Quality:",
         "smart_mode": "Smart Music Mode (Auto-Trim)",
+        "playlist_percentage_label": "Playlist %:",
         "download_btn": "DOWNLOAD & CONVERT",
         "open_folder_btn": "📂 Open Folder",
         "error_no_link": "Error: Please provide a link!",
@@ -43,7 +44,9 @@ TRANSLATIONS = {
         "folder_create_error": "Error: Folder does not exist and cannot be created.",
         "download_error": "Download error: {}",
         "playlist_detected": "Playlist detected: {}",
-        "norm_error": "Normalization error: {}"
+        "norm_error": "Normalization error: {}",
+        "playlist_items_info": "Playlist items: {}. Downloading: {} ({}%). Starting parallel download...",
+        "download_progress": "Downloaded: {}/{}"
     },
     "hu": {
         "title": "YT Audio Converter Pro",
@@ -55,6 +58,7 @@ TRANSLATIONS = {
         "save_to_btn": "📂 Mentés ide...",
         "quality_label": "Hangminőség:",
         "smart_mode": "Okos Mód (Auto-Vágás)",
+        "playlist_percentage_label": "Lejátszási lista %:",
         "download_btn": "LETÖLTÉS ÉS KONVERTÁLÁS",
         "open_folder_btn": "📂 Mappa Megnyitása",
         "error_no_link": "Hiba: Kérlek adj meg egy linket!",
@@ -76,7 +80,9 @@ TRANSLATIONS = {
         "folder_create_error": "Hiba: A mappa nem létezik és nem hozható létre.",
         "download_error": "Letöltési hiba: {}",
         "playlist_detected": "Lejátszási lista észlelve: {}",
-        "norm_error": "Normalizálási hiba: {}"
+        "norm_error": "Normalizálási hiba: {}",
+        "playlist_items_info": "Playlist elemek száma: {}. Letöltendő: {} ({}%). Párhuzamos letöltés indítása...",
+        "download_progress": "Letöltve: {}/{}"
     },
     "de": {
         "title": "YT Audio Converter Pro",
@@ -88,6 +94,7 @@ TRANSLATIONS = {
         "save_to_btn": "📂 Speichern unter...",
         "quality_label": "Audioqualität:",
         "smart_mode": "Smart-Modus (Auto-Trim)",
+        "playlist_percentage_label": "Wiedergabeliste %:",
         "download_btn": "HERUNTERLADEN & KONVERTIEREN",
         "open_folder_btn": "📂 Ordner Öffnen",
         "error_no_link": "Fehler: Bitte geben Sie einen Link ein!",
@@ -109,7 +116,9 @@ TRANSLATIONS = {
         "folder_create_error": "Fehler: Ordner existiert nicht und kann nicht erstellt werden.",
         "download_error": "Download-Fehler: {}",
         "playlist_detected": "Wiedergabeliste erkannt: {}",
-        "norm_error": "Normalisierungsfehler: {}"
+        "norm_error": "Normalisierungsfehler: {}",
+        "playlist_items_info": "Wiedergabeliste Elemente: {}. Herunterladen: {} ({}%). Starte parallelen Download...",
+        "download_progress": "Heruntergeladen: {}/{}"
     },
     "ru": {
         "title": "YT Audio Converter Pro",
@@ -121,6 +130,7 @@ TRANSLATIONS = {
         "save_to_btn": "📂 Сохранить в...",
         "quality_label": "Качество аудио:",
         "smart_mode": "Умный режим (Авто-обрезка)",
+        "playlist_percentage_label": "Плейлист %:",
         "download_btn": "СКАЧАТЬ И КОНВЕРТИРОВАТЬ",
         "open_folder_btn": "📂 Открыть папку",
         "error_no_link": "Ошибка: Пожалуйста, укажите ссылку!",
@@ -142,7 +152,9 @@ TRANSLATIONS = {
         "folder_create_error": "Ошибка: Папка не существует и не может быть создана.",
         "download_error": "Ошибка загрузки: {}",
         "playlist_detected": "Обнаружен плейлист: {}",
-        "norm_error": "Ошибка нормализации: {}"
+        "norm_error": "Ошибка нормализации: {}",
+        "playlist_items_info": "Элементов плейлиста: {}. Загрузка: {} ({}%). Запуск параллельной загрузки...",
+        "download_progress": "Загружено: {}/{}"
     },
     "sv": {
         "title": "YT Audio Converter Pro",
@@ -154,6 +166,7 @@ TRANSLATIONS = {
         "save_to_btn": "📂 Spara till...",
         "quality_label": "Ljudkvalitet:",
         "smart_mode": "Smart Läge (Auto-Trim)",
+        "playlist_percentage_label": "Spellista %:",
         "download_btn": "LADDA NER & KONVERTERA",
         "open_folder_btn": "📂 Öppna Mapp",
         "error_no_link": "Fel: Vänligen ange en länk!",
@@ -175,7 +188,9 @@ TRANSLATIONS = {
         "folder_create_error": "Fel: Mappen finns inte och kan inte skapas.",
         "download_error": "Nedladdningsfel: {}",
         "playlist_detected": "Spellista upptäckt: {}",
-        "norm_error": "Normaliseringsfel: {}"
+        "norm_error": "Normaliseringsfel: {}",
+        "playlist_items_info": "Spellista objekt: {}. Nedladdning: {} ({}%). Startar parallell nedladdning...",
+        "download_progress": "Nedladdat: {}/{}"
     },
     "no": {
         "title": "YT Audio Converter Pro",
@@ -187,6 +202,7 @@ TRANSLATIONS = {
         "save_to_btn": "📂 Lagre til...",
         "quality_label": "Lydkvalitet:",
         "smart_mode": "Smart Modus (Auto-Trim)",
+        "playlist_percentage_label": "Spilleliste %:",
         "download_btn": "LAST NED & KONVERTER",
         "open_folder_btn": "📂 Åpne Mappe",
         "error_no_link": "Feil: Vennligst oppgi en lenke!",
@@ -208,7 +224,9 @@ TRANSLATIONS = {
         "folder_create_error": "Feil: Mappen finnes ikke og kan ikke opprettes.",
         "download_error": "Nedlastingsfeil: {}",
         "playlist_detected": "Spilleliste oppdaget: {}",
-        "norm_error": "Normaliseringsfeil: {}"
+        "norm_error": "Normaliseringsfeil: {}",
+        "playlist_items_info": "Spilleliste elementer: {}. Laster ned: {} ({}%). Starter parallell nedlasting...",
+        "download_progress": "Nedlastet: {}/{}"
     },
     "it": {
         "title": "YT Audio Converter Pro",
@@ -220,6 +238,7 @@ TRANSLATIONS = {
         "save_to_btn": "📂 Salva in...",
         "quality_label": "Qualità Audio:",
         "smart_mode": "Modalità Smart (Auto-Trim)",
+        "playlist_percentage_label": "Playlist %:",
         "download_btn": "SCARICA E CONVERTI",
         "open_folder_btn": "📂 Apri Cartella",
         "error_no_link": "Errore: Inserisci un link!",
@@ -241,7 +260,9 @@ TRANSLATIONS = {
         "folder_create_error": "Errore: La cartella non esiste e non può essere creata.",
         "download_error": "Errore di download: {}",
         "playlist_detected": "Playlist rilevata: {}",
-        "norm_error": "Errore di normalizzazione: {}"
+        "norm_error": "Errore di normalizzazione: {}",
+        "playlist_items_info": "Elementi playlist: {}. Download: {} ({}%). Avvio download parallelo...",
+        "download_progress": "Scaricati: {}/{}"
     },
     "es": {
         "title": "YT Audio Converter Pro",
@@ -253,6 +274,7 @@ TRANSLATIONS = {
         "save_to_btn": "📂 Guardar en...",
         "quality_label": "Calidad de Audio:",
         "smart_mode": "Modo Inteligente (Auto-Recorte)",
+        "playlist_percentage_label": "Lista %:",
         "download_btn": "DESCARGAR Y CONVERTIR",
         "open_folder_btn": "📂 Abrir Carpeta",
         "error_no_link": "Error: ¡Por favor ingrese un enlace!",
@@ -274,7 +296,9 @@ TRANSLATIONS = {
         "folder_create_error": "Error: La carpeta no existe y no se puede crear.",
         "download_error": "Error de descarga: {}",
         "playlist_detected": "Lista de reproducción detectada: {}",
-        "norm_error": "Error de normalización: {}"
+        "norm_error": "Error de normalización: {}",
+        "playlist_items_info": "Elementos de lista: {}. Descargando: {} ({}%). Iniciando descarga paralela...",
+        "download_progress": "Descargado: {}/{}"
     },
     "fr": {
         "title": "YT Audio Converter Pro",
@@ -286,6 +310,7 @@ TRANSLATIONS = {
         "save_to_btn": "📂 Enregistrer sous...",
         "quality_label": "Qualité Audio:",
         "smart_mode": "Mode Intelligent (Auto-Trim)",
+        "playlist_percentage_label": "Playlist %:",
         "download_btn": "TÉLÉCHARGER ET CONVERTIR",
         "open_folder_btn": "📂 Ouvrir le dossier",
         "error_no_link": "Erreur : Veuillez fournir un lien !",
@@ -307,7 +332,9 @@ TRANSLATIONS = {
         "folder_create_error": "Erreur : Le dossier n'existe pas et ne peut pas être créé.",
         "download_error": "Erreur de téléchargement : {}",
         "playlist_detected": "Playlist détectée : {}",
-        "norm_error": "Erreur de normalisation : {}"
+        "norm_error": "Erreur de normalisation : {}",
+        "playlist_items_info": "Éléments de playlist : {}. Téléchargement : {} ({}%). Démarrage du téléchargement parallèle...",
+        "download_progress": "Téléchargé : {}/{}"
     },
     "sk": {
         "title": "YT Audio Converter Pro",
@@ -319,6 +346,7 @@ TRANSLATIONS = {
         "save_to_btn": "📂 Uložiť do...",
         "quality_label": "Kvalita Zvuku:",
         "smart_mode": "Inteligentný Režim (Auto-Orezanie)",
+        "playlist_percentage_label": "Playlist %:",
         "download_btn": "STIAHNUŤ A KONVERTOVAŤ",
         "open_folder_btn": "📂 Otvoriť Priečinok",
         "error_no_link": "Chyba: Zadajte odkaz!",
@@ -340,7 +368,9 @@ TRANSLATIONS = {
         "folder_create_error": "Chyba: Priečinok neexistuje a nedá sa vytvoriť.",
         "download_error": "Chyba sťahovania: {}",
         "playlist_detected": "Zistený zoznam skladieb: {}",
-        "norm_error": "Chyba normalizácie: {}"
+        "norm_error": "Chyba normalizácie: {}",
+        "playlist_items_info": "Položky playlistu: {}. Sťahovanie: {} ({}%). Spúšťanie paralelného sťahovania...",
+        "download_progress": "Stiahnuté: {}/{}"
     },
     "ro": {
         "title": "YT Audio Converter Pro",
@@ -352,6 +382,7 @@ TRANSLATIONS = {
         "save_to_btn": "📂 Salvează în...",
         "quality_label": "Calitate Audio:",
         "smart_mode": "Mod Inteligent (Auto-Trim)",
+        "playlist_percentage_label": "Playlist %:",
         "download_btn": "DESCARCĂ ȘI CONVERTEȘTE",
         "open_folder_btn": "📂 Deschide Dosar",
         "error_no_link": "Eroare: Vă rugăm să introduceți un link!",
@@ -373,7 +404,9 @@ TRANSLATIONS = {
         "folder_create_error": "Eroare: Dosarul nu există și nu poate fi creat.",
         "download_error": "Eroare de descărcare: {}",
         "playlist_detected": "Playlist detectat: {}",
-        "norm_error": "Eroare de normalizare: {}"
+        "norm_error": "Eroare de normalizare: {}",
+        "playlist_items_info": "Elemente playlist: {}. Descărcare: {} ({}%). Începere descărcare paralelă...",
+        "download_progress": "Descărcat: {}/{}"
     },
     "hr": {
         "title": "YT Audio Converter Pro",
@@ -385,6 +418,7 @@ TRANSLATIONS = {
         "save_to_btn": "📂 Spremi u...",
         "quality_label": "Kvaliteta Zvuka:",
         "smart_mode": "Pametni Način (Auto-Rezanje)",
+        "playlist_percentage_label": "Popis %:",
         "download_btn": "PREUZMI I PRETVORI",
         "open_folder_btn": "📂 Otvori Mapu",
         "error_no_link": "Greška: Molimo unesite poveznicu!",
@@ -406,7 +440,9 @@ TRANSLATIONS = {
         "folder_create_error": "Greška: Mapa ne postoji i ne može se stvoriti.",
         "download_error": "Greška pri preuzimanju: {}",
         "playlist_detected": "Otkriven popis za reprodukciju: {}",
-        "norm_error": "Greška normalizacije: {}"
+        "norm_error": "Greška normalizacije: {}",
+        "playlist_items_info": "Stavki popisa: {}. Preuzimanje: {} ({}%). Pokretanje paralelnog preuzimanja...",
+        "download_progress": "Preuzeto: {}/{}"
     },
     "tr": {
         "title": "YT Audio Converter Pro",
@@ -418,6 +454,7 @@ TRANSLATIONS = {
         "save_to_btn": "📂 Şuraya Kaydet...",
         "quality_label": "Ses Kalitesi:",
         "smart_mode": "Akıllı Mod (Otomatik Kırpma)",
+        "playlist_percentage_label": "Çalma listesi %:",
         "download_btn": "İNDİR VE DÖNÜŞTÜR",
         "open_folder_btn": "📂 Klasörü Aç",
         "error_no_link": "Hata: Lütfen bir bağlantı girin!",
@@ -439,7 +476,9 @@ TRANSLATIONS = {
         "folder_create_error": "Hata: Klasör mevcut değil ve oluşturulamıyor.",
         "download_error": "İndirme hatası: {}",
         "playlist_detected": "Oynatma listesi algılandı: {}",
-        "norm_error": "Normalleştirme hatası: {}"
+        "norm_error": "Normalleştirme hatası: {}",
+        "playlist_items_info": "Çalma listesi öğeleri: {}. İndiriliyor: {} ({}%). Paralel indirme başlatılıyor...",
+        "download_progress": "İndirildi: {}/{}"
     },
     "el": {
         "title": "YT Audio Converter Pro",
@@ -451,6 +490,7 @@ TRANSLATIONS = {
         "save_to_btn": "📂 Αποθήκευση σε...",
         "quality_label": "Ποιότητα Ήχου:",
         "smart_mode": "Έξυπνη Λειτουργία (Αυτόματη Περικοπή)",
+        "playlist_percentage_label": "Λίστα %:",
         "download_btn": "ΛΗΨΗ ΚΑΙ ΜΕΤΑΤΡΟΠΗ",
         "open_folder_btn": "📂 Άνοιγμα Φακέλου",
         "error_no_link": "Σφάλμα: Παρακαλώ εισάγετε έναν σύνδεσμο!",
@@ -472,6 +512,8 @@ TRANSLATIONS = {
         "folder_create_error": "Σφάλμα: Ο φάκελος δεν υπάρχει και δεν μπορεί να δημιουργηθεί.",
         "download_error": "Σφάλμα λήψης: {}",
         "playlist_detected": "Εντοπίστηκε λίστα αναπαραγωγής: {}",
-        "norm_error": "Σφάλμα κανονικοποίησης: {}"
+        "norm_error": "Σφάλμα κανονικοποίησης: {}",
+        "playlist_items_info": "Στοιχεία λίστας: {}. Λήψη: {} ({}%). Έναρξη παράλληλης λήψης...",
+        "download_progress": "Λήφθηκε: {}/{}"
     }
 }
