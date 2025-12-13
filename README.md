@@ -127,7 +127,8 @@ Run the `build_windows.bat` script. The output file will be in the `dist/` folde
     *   Full support for both single video and playlist conversions
 *   🌍 **Multi-Language Support:**
     *   Automatic language detection
-    *   14 languages supported: English, Hungarian, German, Russian, Swedish, Norwegian, Italian, Spanish, French, Slovak, Romanian, Croatian, Turkish, Greek
+    *   14 languages supported: English, Hungarian, German, Russian, Swedish, Norwegian,
+        Italian, Spanish, French, Slovak, Romanian, Croatian, Turkish, Greek
 *   🎨 **Modern UI:**
     *   Complete redesign with Dark Mode using CustomTkinter
     *   Professional and intuitive interface
