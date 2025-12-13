@@ -77,7 +77,7 @@ Want to contribute or build from source? Follow these steps.
 
 ```bash
 # Clone the repository
-git clone https://github.com/YOUR_USERNAME/YTDownMP3.git
+git clone https://github.com/Szaturnusz/YTDownMP3.git
 cd YTDownMP3
 
 # Create a virtual environment
