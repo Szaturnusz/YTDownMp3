@@ -418,6 +418,7 @@ class YouTubeConverterApp(ctk.CTk):
             progress=False,
             audio_codec=ffmpeg_codec,
             audio_bitrate=bitrate,
+            post_filter='volume=0.6', # 60% hangerő beállítása az egységes hangerőért
             extra_output_options=['-ar', '44100'] # CD minőségű mintavételezés (44.1 kHz)
         )
         
