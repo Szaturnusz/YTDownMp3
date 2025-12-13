@@ -357,7 +357,7 @@ class YouTubeConverterApp(ctk.CTk):
             items_to_download = max(1, int(total_items * playlist_percentage / 100))
             entries = entries[:items_to_download]
             
-            self.log(f"Playlist elemek száma: {total_items}. Letöltendő: {items_to_download} ({playlist_percentage}%). Párhuzamos letöltés indítása...")
+            self.log(self.t["playlist_items_info"].format(total_items, items_to_download, playlist_percentage))
 
             def download_entry(entry):
                 video_url = entry.get('url')
@@ -396,7 +396,7 @@ class YouTubeConverterApp(ctk.CTk):
                     self.progressbar.set(progress)
                     # Opcionális: logolhatnánk minden X. elemnél, de ne spammeljük tele
                     if completed % 5 == 0 or completed == items_to_download:
-                         self.log(f"Letöltve: {completed}/{items_to_download}")
+                         self.log(self.t["download_progress"].format(completed, items_to_download))
 
         else:
             # Ez egy sima videó - Hagyományos módszer
