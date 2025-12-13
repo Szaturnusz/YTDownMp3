@@ -28,6 +28,7 @@ def build_binary():
         "--icon", ICON_PATH,
         "--add-data", f"{ctk_path}:customtkinter",
         "--add-data", "localization.py:.",
+        "--add-data", "ytdown.png:.",
         "--hidden-import", "PIL._tkinter_finder",
         "main.py"
     ]

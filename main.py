@@ -7,6 +7,7 @@ import subprocess
 import platform
 import customtkinter as ctk
 from tkinter import filedialog
+from PIL import Image, ImageTk
 import yt_dlp
 from ffmpeg_normalize import FFmpegNormalize
 from localization import TRANSLATIONS, get_system_language
@@ -14,6 +15,16 @@ from localization import TRANSLATIONS, get_system_language
 # Megjelenés beállítása
 ctk.set_appearance_mode("Dark")  # Sötét mód a pro hatásért
 ctk.set_default_color_theme("dark-blue")
+
+def resource_path(relative_path):
+    """ Get absolute path to resource, works for dev and for PyInstaller """
+    try:
+        # PyInstaller creates a temp folder and stores path in _MEIPASS
+        base_path = sys._MEIPASS
+    except Exception:
+        base_path = os.path.abspath(".")
+
+    return os.path.join(base_path, relative_path)
 
 class YouTubeConverterApp(ctk.CTk):
     def __init__(self):
@@ -27,6 +38,17 @@ class YouTubeConverterApp(ctk.CTk):
         # Ablak beállításai
         self.title(self.t["title"])
         self.geometry("700x550")
+        
+        # Icon beállítása
+        try:
+            icon_path = resource_path("ytdown.png")
+            if os.path.exists(icon_path):
+                img = Image.open(icon_path)
+                photo = ImageTk.PhotoImage(img)
+                self.wm_iconphoto(True, photo)
+        except Exception as e:
+            print(f"Warning: Could not load icon: {e}")
+
         self.grid_columnconfigure(0, weight=1)
         self.grid_rowconfigure(0, weight=1)
 
