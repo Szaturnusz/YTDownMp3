@@ -114,9 +114,9 @@ Run the `build_windows.bat` script. The output file will be in the `dist/` folde
     *   High-fidelity audio output with 320kbps bitrate and 44.1kHz sample rate
     *   Supports MP3, OGG, and AAC formats
 *   🔊 **Advanced Audio Normalization:**
-    *   EBU R128 standard normalization (-13 LUFS target loudness)
+    *   EBU R128 standard normalization (target: -13 LUFS - Loudness Units relative to Full Scale)
     *   Dynamic range compression for consistent volume
-    *   True Peak limiting (-1.0 dBTP) to prevent distortion
+    *   True Peak limiting (-1.0 dBTP - decibels True Peak) to prevent distortion
 *   ✂️ **Smart Mode:**
     *   SponsorBlock integration for automatic removal of non-music segments
     *   Removes intros, outros, and sponsorships
